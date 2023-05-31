@@ -1,7 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System.Diagnostics;
 
-var command = "echo \"Hello World\"";
+var command = "echo Hello World";
 
 //    command = @"sudo iptables  -t nat -N TAOXANH
 //sudo iptables  -t nat -A TAOXANH -d 0.0.0.0/8 -j RETURN
@@ -18,24 +18,16 @@ var command = "echo \"Hello World\"";
 //sudo iptables  -t nat -A TAOXANH -p tcp -j REDIRECT --to-ports 12345
 //# Any tcp connection should be redirected to TAOXANH chain
 //sudo iptables  -t nat -A OUTPUT -p tcp -j TAOXANH";
-
-string result = "";
+ 
 
 Console.WriteLine("Start Command " + command);
 using (Process proc = new Process())
 {
     proc.StartInfo.FileName = "/bin/bash";
     proc.StartInfo.Arguments = "-c \" " + command + " \"";
-    proc.StartInfo.UseShellExecute = false;
-    proc.StartInfo.RedirectStandardOutput = true;
-    proc.StartInfo.RedirectStandardError = true;
+    proc.StartInfo.UseShellExecute = false; 
     proc.Start();
-
-    result += proc.StandardOutput.ReadToEnd();
-    result += proc.StandardError.ReadToEnd();
-
+     
     proc.WaitForExit();
 }
-
-Console.WriteLine(result);
-Console.WriteLine("End Command");
+ 
