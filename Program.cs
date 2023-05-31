@@ -24,8 +24,8 @@ Console.WriteLine("Start Command " + command);
 using (Process proc = new Process())
 {
     proc.StartInfo.FileName = "/bin/sh";
-    proc.StartInfo.Arguments = "-c \" " + command + " \"";
-    proc.StartInfo.UseShellExecute = false; 
+    proc.StartInfo.Arguments = "-c \" echo vo ly \"";
+    proc.StartInfo.UseShellExecute = true; 
     proc.Start();
      
     proc.WaitForExit();
