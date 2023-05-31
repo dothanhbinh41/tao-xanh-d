@@ -1,7 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System.Diagnostics;
 
-var command = "echo \"    \" sudo iptables -L";
+var command = "echo \"Hello World\"";
 
 //    command = @"sudo iptables  -t nat -N TAOXANH
 //sudo iptables  -t nat -A TAOXANH -d 0.0.0.0/8 -j RETURN
