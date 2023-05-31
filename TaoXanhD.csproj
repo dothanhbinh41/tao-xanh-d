@@ -9,7 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="runtime.linux-musl-arm64.Microsoft.DotNet.ILCompiler" Version="7.0.5" />
+    <PackageReference Include="runtime.linux-musl-arm64.Microsoft.DotNet.ILCompiler" Version="7.0.5" />  
+    <PackageReference Include="runtime.linux-musl-x64.Microsoft.DotNet.ILCompiler" Version="7.0.5" />
   </ItemGroup>
 
 </Project>
