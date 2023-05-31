@@ -23,7 +23,7 @@ var command = "echo Hello World";
 Console.WriteLine("Start Command " + command);
 using (Process proc = new Process())
 {
-    proc.StartInfo.FileName = "/bin sh";
+    proc.StartInfo.FileName = "/bin/sh";
     proc.StartInfo.Arguments = "-c \" " + command + " \"";
     proc.StartInfo.UseShellExecute = false; 
     proc.Start();
