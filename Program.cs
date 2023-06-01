@@ -7,17 +7,7 @@ namespace TaoXanhD
     {
         static void Main(string[] args)
         {
-            Console.WriteLine($"Current date and time: {DateTime.Now}");
-
-            WriteTimezoneInfo();
-            Console.WriteLine();
-            WriteEnvironmentInfo();
-            Console.WriteLine();
-            WritePathInfo();
-
-            Console.WriteLine();
-            Console.WriteLine("Press any key to exit...");
-            Console.ReadKey();
+            Console.WriteLine($"Current date and time: {DateTime.Now}"); 
         }
 
         static void WriteTimezoneInfo()
