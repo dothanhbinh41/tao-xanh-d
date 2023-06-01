@@ -1,4 +1,7 @@
-﻿namespace TaoXanhD
+﻿using System;
+using System.IO;
+
+namespace TaoXanhD
 {
     class Program
     {
