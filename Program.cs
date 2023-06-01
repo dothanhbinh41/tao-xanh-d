@@ -1,42 +1,52 @@
-﻿using System.Diagnostics;
-
-try
+﻿namespace TaoXanhD
 {
-    // See https://aka.ms/new-console-template for more information
-
-
-    var command = "echo Hello World";
-
-    //    command = @"sudo iptables  -t nat -N TAOXANH
-    //sudo iptables  -t nat -A TAOXANH -d 0.0.0.0/8 -j RETURN
-    //sudo iptables  -t nat -A TAOXANH -d 10.0.0.0/8 -j RETURN
-    //sudo iptables  -t nat -A TAOXANH -d 100.64.0.0/10 -j RETURN
-    //sudo iptables  -t nat -A TAOXANH -d 127.0.0.0/8 -j RETURN
-    //sudo iptables  -t nat -A TAOXANH -d 169.254.0.0/16 -j RETURN
-    //sudo iptables  -t nat -A TAOXANH -d 172.16.0.0/12 -j RETURN
-    //sudo iptables  -t nat -A TAOXANH -d 192.168.0.0/16 -j RETURN
-    //sudo iptables  -t nat -A TAOXANH -d 198.18.0.0/15 -j RETURN
-    //sudo iptables  -t nat -A TAOXANH -d 224.0.0.0/4 -j RETURN
-    //sudo iptables  -t nat -A TAOXANH -d 240.0.0.0/4 -j RETURN
-    //# Anything should be redirected to port 12345
-    //sudo iptables  -t nat -A TAOXANH -p tcp -j REDIRECT --to-ports 12345
-    //# Any tcp connection should be redirected to TAOXANH chain
-    //sudo iptables  -t nat -A OUTPUT -p tcp -j TAOXANH";
-
-
-    Console.WriteLine("Start Command " + command);
-    using (Process proc = new Process())
+    class Program
     {
-        proc.StartInfo.FileName = "/bin/sh";
-        proc.StartInfo.Arguments = "-c \" echo vo ly \"";
-        proc.StartInfo.UseShellExecute = false;
-        proc.Start();
+        static void Main(string[] args)
+        {
+            Console.WriteLine($"Current date and time: {DateTime.Now}");
 
-        proc.WaitForExit();
+            WriteTimezoneInfo();
+            Console.WriteLine();
+            WriteEnvironmentInfo();
+            Console.WriteLine();
+            WritePathInfo();
+
+            Console.WriteLine();
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadKey();
+        }
+
+        static void WriteTimezoneInfo()
+        {
+            Console.WriteLine("Timezone Information");
+            WriteObjectProperties(typeof(TimeZoneInfo), TimeZoneInfo.Local, new string(' ', 4));
+        }
+
+        static void WriteEnvironmentInfo()
+        {
+            Console.WriteLine("Environment Information");
+            WriteObjectProperties(typeof(Environment), null, new string(' ', 4));
+        }
+
+        static void WritePathInfo()
+        {
+            Console.WriteLine("Path Information");
+            Console.WriteLine($"{new string(' ', 4)}{nameof(Path.DirectorySeparatorChar)}: '{Path.DirectorySeparatorChar}'");
+            Console.WriteLine($"{new string(' ', 4)}{nameof(Path.AltDirectorySeparatorChar)}: '{Path.AltDirectorySeparatorChar}'");
+            Console.WriteLine($"{new string(' ', 4)}{nameof(Path.PathSeparator)}: '{Path.PathSeparator}'");
+            Console.WriteLine($"{new string(' ', 4)}{nameof(Path.VolumeSeparatorChar)}: '{Path.VolumeSeparatorChar}'");
+
+        }
+
+        static void WriteObjectProperties(Type targetType, object targetInstance, string prefix = "")
+        {
+            var properties = targetType.GetProperties();
+
+            foreach (var property in properties)
+            {
+                Console.WriteLine($"{prefix}{property.Name}: {property.GetValue(targetInstance)}");
+            }
+        }
     }
-
-}
-catch (Exception e)
-{
-    Console.WriteLine(e.Message);
 }
