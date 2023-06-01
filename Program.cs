@@ -27,7 +27,7 @@ try
     Console.WriteLine("Start Command " + command);
     using (Process proc = new Process())
     {
-        proc.StartInfo.FileName = "/bin/sh";
+        proc.StartInfo.FileName = "/bin/bash";
         proc.StartInfo.Arguments = "-c \" echo vo ly \"";
         proc.StartInfo.UseShellExecute = true;
         proc.Start();
